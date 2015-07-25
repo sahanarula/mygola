@@ -51,6 +51,7 @@ module.exports = {
 			  }
 			});	
 		}
+		console.log(results);
 	  	res.json(results); // Show the HTML for the Google homepage.
 	}
 };
