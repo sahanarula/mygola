@@ -43,7 +43,8 @@ module.exports = {
 			var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&radius=500&types=' + q[i] + '&key=' + sails.conf.api_key + '&sensor=true';
 			var response = sails.requestSync('GET', url);
 			var result = JSON.parse(response.body.toString('utf8'));
-			results.push({id: q[i], counts: result.length, content: result});
+			console.log(result.length);
+			results.push({id: q[i], content: result, counts: 4});
 		}
 		res.json(results);
 
