@@ -32,8 +32,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': 'GoogleController.index',
-  '/getbatch': 'GoogleController.getbatch'
+  'GET /': 'GoogleController.index',
+  'GET /getbatch': 'GoogleController.getbatch',
+  'POST /emergency': 'EventController.call'
 
   /***************************************************************************
   *                                                                          *
