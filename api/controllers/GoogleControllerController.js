@@ -11,8 +11,8 @@ module.exports = {
 		console.log(lat);
 		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&radius=500&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
 		  if (!error && response.statusCode == 200) {
-		  	console.log(response);
-		    res.json(body) // Show the HTML for the Google homepage.
+		  	console.log(body);
+		    res.json(response) // Show the HTML for the Google homepage.
 		  }
 		});
 	}	
