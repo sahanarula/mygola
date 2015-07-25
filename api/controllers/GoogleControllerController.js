@@ -43,15 +43,17 @@ module.exports = {
 			counts = 0;
 			var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&radius=500&types=' + q[i] + '&key=' + sails.conf.api_key + '&sensor=true';
 			console.log(url);
-			sails.request(url, function (error, response, body) {
-			  if (!error && response.statusCode == 200) {
-				  	info = JSON.parse(body);
-				  	counts = info.length;
-				  	results.push({counts: counts, result: info});
-					console.log(results);
-				  	res.json(results); // Show the HTML for the Google homepage.
-				}
-			});	
+			var results = sails.request(url);
+			console.log(results);
+			// , function (error, response, body) {
+			//   if (!error && response.statusCode == 200) {
+			// 	  	info = JSON.parse(body);
+			// 	  	counts = info.length;
+			// 	  	results.push({counts: counts, result: info});
+			// 		console.log(results);
+			// 	  	res.json(results); // Show the HTML for the Google homepage.
+			// 	}
+			// }	
 		}
 	}
 };
