@@ -9,6 +9,7 @@ module.exports = {
 		lat = req.param('lat');
 		lon = req.param('lon');
 		deg = req.param('deg');
+		var R = 6378137;
 		var alpha = 15;
 		var dist = 500;
 		var radius = 250;
