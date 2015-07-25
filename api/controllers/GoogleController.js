@@ -23,7 +23,7 @@ module.exports = {
 		lono = parseFloat(lon) + parseFloat(ans);
 		latFinal = parseFloat((parseFloat(lat)+parseFloat(lato))/2);
 		lonFinal = parseFloat((parseFloat(lon)+parseFloat(lono))/2);
-		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ latFinal +','+ lonFinal +'&radius=' + radius + '&types=amusement_park|doctor|food|gym|zoo|shopping_mall|restaurant|night_club|hospital&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
+		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ latFinal +','+ lonFinal +'&radius=' + radius + '&types=amusement_park|doctor|food|gym|zoo|shopping_mall|restaurant|night_club|hospital|hotel&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		  	var info = JSON.parse(body);
 		  	res.json(info.results); // Show the HTML for the Google homepage.
