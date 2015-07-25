@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': 'GoogleController.index',
-  '/nearbycities': 'GoogleController.nearbycities'
+  '/getcounts': 'GoogleController.getcounts'
 
   /***************************************************************************
   *                                                                          *
