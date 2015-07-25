@@ -35,11 +35,14 @@ module.exports = {
 		lon = req.param('lon');
 		q = req.param('q');
 		q = q.split(',');
+		console.log(q);
 		var results = [];
 		var counts;
 		for(i=0; i<q.length; i++){
 			counts = 0;
-			sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&radius=500&types=' + q[i] + '&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
+			var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&radius=500&types=' + q[i] + '&key=' + sails.conf.api_key + '&sensor=true';
+			console.log(url);
+			sails.request(url, function (error, response, body) {
 			  if (!error && response.statusCode == 200) {
 			  	var info = JSON.parse(body);
 			  	counts = q.length;
