@@ -46,7 +46,7 @@ module.exports = {
 			var result = JSON.parse(response.body.toString('utf8'));
 			results.push({id: q[i], counts: result.length, content: result});
 		}
-		res.json(result);
+		res.json(results);
 
 	}
 };
