@@ -39,10 +39,6 @@ module.exports = {
 		var results = [];
 		var counts;
 		var info;
-		var cb = function(){
-			console.log(results);
-		  	res.json(results); // Show the HTML for the Google homepage.
-		}
 		(function(){
 			for(i=0; i<q.length; i++){
 				counts = 0;
@@ -57,7 +53,10 @@ module.exports = {
 					}
 				});	
 			}	
-		}, cb())
+		}, function(){
+			console.log(results);
+		  	res.json(results); // Show the HTML for the Google homepage.
+		})
 		
 	}
 };
