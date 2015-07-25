@@ -10,7 +10,7 @@ module.exports = {
 		lon = req.param('lon');
 		deg = req.param('deg');
 		var R = 6378137;
-		var alpha = 15;
+		var alpha = 60;
 		var dist = 500;
 		var radius = 250;
 		var xDist = dist * Math.cos(deg/180*Math.PI);
@@ -18,14 +18,12 @@ module.exports = {
 		dLat = yDist/R;
 		dLon = xDist/(R*Math.cos(Math.PI*lat/180));
 		ans = dLat * 180/Math.PI;
-		lato = Math.float(lat) + Math.float(ans);
+		lato = parseFloat(lat) + parseFloat(ans);
 		ans = dLon * 180/Math.PI;
-		lono = Math.float(lon) + Math.float(ans);
-		latFinal = (lat+lato)/2;
-		lonFinal = (lon+lono)/2;
-		console.log(lato+"     askjddsakjd ");
-		console.log(lono + "      alksdjsadk ");
-		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ latFinal +','+ lonFinal +'&radius=dist&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
+		lono = parseFloat(lon) + parseFloat(ans);
+		latFinal = parseFloat((parseFloat(lat)+parseFloat(lato))/2);
+		lonFinal = parseFloat((parseFloat(lon)+parseFloat(lono))/2);
+		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ latFinal +','+ lonFinal +'&radius=' + radius + '&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		  	var info = JSON.parse(body);
 		  	res.json(info.results); // Show the HTML for the Google homepage.
