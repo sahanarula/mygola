@@ -8,7 +8,21 @@ module.exports = {
 	index: function(req, res){
 		lat = req.param('lat');
 		lon = req.param('lon');
-		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&radius=500&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
+		deg = req.param('deg');
+		var alpha = 15;
+		var dist = 500;
+		var radius = 250;
+		var xDist = dist * Math.cos(deg/180*Math.PI);
+		var yDist = dist * Math.sin(deg/180*Math.PI);
+		dLat = yDist/R;
+		dLon = xDist/(R*Math.cos(Math.PI*lat/180));
+		lato = lat + dLat * 180/Math.PI;
+		lono = lon + dLon * 180/Math.PI;
+		latFinal = (lat+lato)/2;
+		lonFinal = (lon+lono)/2;
+		console.log(lato);
+		console.log(lono);
+		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ latFinal +','+ lonFinal +'&radius=dist&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		  	var info = JSON.parse(body);
 		  	res.json(info.results); // Show the HTML for the Google homepage.
