@@ -17,8 +17,8 @@ module.exports = {
 		var yDist = dist * Math.sin(deg/180*Math.PI);
 		dLat = yDist/R;
 		dLon = xDist/(R*Math.cos(Math.PI*lat/180));
-		lato = Math.float(lat) + Math.float(dLat * 180/Math.PI);
-		lono = Math.float(lon) + Math.float(dLon * 180/Math.PI);
+		lato = Math.float(lat) + Math.float((dLat * 180/Math.PI));
+		lono = Math.float(lon) + Math.float((dLon * 180/Math.PI));
 		latFinal = (lat+lato)/2;
 		lonFinal = (lon+lono)/2;
 		console.log(lato+"     askjddsakjd ");
