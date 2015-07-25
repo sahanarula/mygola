@@ -46,7 +46,7 @@ module.exports = {
 			sails.request(url, function (error, response, body) {
 			  if (!error && response.statusCode == 200) {
 			  	info = JSON.parse(body);
-			  	counts = q[i].length;
+			  	counts = info.length;
 			  	results.push({counts: counts, result: info});
 			  }
 			});	
