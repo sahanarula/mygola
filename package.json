@@ -1,0 +1,16 @@
+{
+  "name": "google-api",
+  "version": "1.0.0",
+  "description": "google api for mygola",
+  "main": "googletest.js",
+  "dependencies": {
+    "node-google-api": "^0.3.0",
+    "request": "^2.60.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
