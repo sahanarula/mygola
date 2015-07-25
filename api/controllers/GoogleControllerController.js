@@ -38,14 +38,15 @@ module.exports = {
 		console.log(q);
 		var results = [];
 		var counts;
+		var info;
 		for(i=0; i<q.length; i++){
 			counts = 0;
 			var url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&radius=500&types=' + q[i] + '&key=' + sails.conf.api_key + '&sensor=true';
 			console.log(url);
 			sails.request(url, function (error, response, body) {
 			  if (!error && response.statusCode == 200) {
-			  	var info = JSON.parse(body);
-			  	counts = q.length;
+			  	info = JSON.parse(body);
+			  	counts = q[i].length;
 			  	results.push({counts: counts, result: info});
 			  }
 			});	
