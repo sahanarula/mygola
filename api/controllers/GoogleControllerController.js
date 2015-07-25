@@ -10,8 +10,11 @@ module.exports = {
 		lon = req.param('lon');
 		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&radius=500&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
 		  if (!error && response.statusCode == 200) {
-		  	console.log(response.results);
-		  	res.json(response.results) // Show the HTML for the Google homepage.
+		  	console.log(JSON.parse(response));
+		  	response = JSON.parse(response);
+		  	response = JSON.parse(response["html_attributions"]);
+		  	response = JSON.parse(response.html_attributions);
+		  	res.json(response) // Show the HTML for the Google homepage.
 		  }
 		});
 	}	
