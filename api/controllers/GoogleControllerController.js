@@ -55,8 +55,8 @@ module.exports = {
 					  	results.push({counts: counts, result: info});
 					}
 				});	
+				if(i == (q.length-1)) callback();
 			}	
-			callback();
 		})
 		
 	}
