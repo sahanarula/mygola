@@ -53,6 +53,8 @@ module.exports = {
 					  	info = JSON.parse(body);
 					  	counts = info.length;
 					  	results.push({counts: counts, result: info});
+					  	console.log(i);
+					  	console.log(q.length);
 						if(i == (q.length-1)){
 							console.log(i);
 							callback();	
