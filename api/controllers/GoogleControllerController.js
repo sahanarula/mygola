@@ -21,8 +21,8 @@ module.exports = {
 		lono = lon + dLon * 180/Math.PI;
 		latFinal = (lat+lato)/2;
 		lonFinal = (lon+lono)/2;
-		console.log(lato);
-		console.log(lono);
+		console.log(lato+"       ");
+		console.log(lono + "       ");
 		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ latFinal +','+ lonFinal +'&radius=dist&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		  	var info = JSON.parse(body);
