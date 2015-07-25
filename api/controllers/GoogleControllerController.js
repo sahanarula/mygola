@@ -55,7 +55,10 @@ module.exports = {
 					  	results.push({counts: counts, result: info});
 					}
 				});	
-				if(i == (q.length-1)) callback();
+				if(i == (q.length-1)){
+					console.log(i);
+					callback();	
+				}
 			}	
 		})
 		
