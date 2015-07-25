@@ -39,6 +39,10 @@ module.exports = {
 		var results = [];
 		var counts;
 		var info;
+		var callback = function(){
+			console.log(results);
+			res.json(results);
+		}
 		(function(){
 			for(i=0; i<q.length; i++){
 				counts = 0;
@@ -49,13 +53,10 @@ module.exports = {
 					  	info = JSON.parse(body);
 					  	counts = info.length;
 					  	results.push({counts: counts, result: info});
-
 					}
 				});	
 			}	
-		}, function(){
-			console.log(results);
-		  	res.json(results); // Show the HTML for the Google homepage.
+			callback();
 		})
 		
 	}
