@@ -34,7 +34,7 @@ module.exports = {
 		lat = req.param('lat');
 		lon = req.param('lon');
 		q = req.param('q');
-		q = split(',');
+		q = q.split(',');
 		var results = [];
 		var counts;
 		for(i=0; i<q.length; i++){
