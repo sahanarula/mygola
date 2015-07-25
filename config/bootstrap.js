@@ -12,5 +12,6 @@
 module.exports.bootstrap = function(cb) {
   sails.conf = require('./google.json');
   sails.request = require('request');
+  sails.requestSync = require('sync-request');
   cb();
 };
