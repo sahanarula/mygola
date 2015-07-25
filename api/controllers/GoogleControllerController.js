@@ -53,12 +53,12 @@ module.exports = {
 					  	info = JSON.parse(body);
 					  	counts = info.length;
 					  	results.push({counts: counts, result: info});
+						if(i == (q.length-1)){
+							console.log(i);
+							callback();	
+						}
 					}
 				});	
-				if(i == (q.length-1)){
-					console.log(i);
-					callback();	
-				}
 			}	
 		})
 		
