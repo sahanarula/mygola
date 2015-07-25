@@ -30,14 +30,14 @@ module.exports = {
 		  }
 		});
 	},
-	nearbycities: function(req, res){
+	getcounts: function(req, res){
 		lat = req.param('lat');
 		lon = req.param('lon');
-		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&types=cities&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
+		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ latFinal +','+ lonFinal +'&radius=' + radius + '&types=amusement_park,doctor,food,gym,zoo,shopping_mall,restaurant,night_club,hospital&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		  	var info = JSON.parse(body);
 		  	res.json(info.results); // Show the HTML for the Google homepage.
 		  }
 		});	
-	}	
+	}
 };
