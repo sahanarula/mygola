@@ -12,6 +12,5 @@
 module.exports.bootstrap = function(cb) {
   sails.conf = require('./google.json');
   sails.request = require('request');
-  sails.mmdbreader = require('maxmind-db-reader');
   cb();
 };
