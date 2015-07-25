@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': 'GoogleController.index',
-  '/getcounts': 'GoogleController.getcounts'
+  '/getbatch': 'GoogleController.getbatch'
 
   /***************************************************************************
   *                                                                          *

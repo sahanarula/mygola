@@ -23,21 +23,30 @@ module.exports = {
 		lono = parseFloat(lon) + parseFloat(ans);
 		latFinal = parseFloat((parseFloat(lat)+parseFloat(lato))/2);
 		lonFinal = parseFloat((parseFloat(lon)+parseFloat(lono))/2);
-		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ latFinal +','+ lonFinal +'&radius=' + radius + '&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
+		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ latFinal +','+ lonFinal +'&radius=' + radius + '&types=amusement_park|doctor|food|gym|zoo|shopping_mall|restaurant|night_club|hospital&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
 		  if (!error && response.statusCode == 200) {
 		  	var info = JSON.parse(body);
 		  	res.json(info.results); // Show the HTML for the Google homepage.
 		  }
 		});
 	},
-	getcounts: function(req, res){
+	getbatch: function(req, res){
 		lat = req.param('lat');
 		lon = req.param('lon');
-		sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&radius=500&types=amusement_park|doctor|food|gym|zoo|shopping_mall|restaurant|night_club|hospital&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
-		  if (!error && response.statusCode == 200) {
-		  	var info = JSON.parse(body);
-		  	res.json(info.results); // Show the HTML for the Google homepage.
-		  }
-		});	
+		q = req.param('q');
+		q = split(',');
+		var results = [];
+		var counts;
+		for(i=0; i<q.length; i++){
+			counts = 0;
+			sails.request('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ lat +','+ lon +'&radius=500&types=' + q[i] + '&key=' + sails.conf.api_key + '&sensor=true', function (error, response, body) {
+			  if (!error && response.statusCode == 200) {
+			  	var info = JSON.parse(body);
+			  	counts = q.length;
+			  	results.push({counts: counts, result: info});
+			  }
+			});	
+		}
+	  	res.json(results); // Show the HTML for the Google homepage.
 	}
 };
