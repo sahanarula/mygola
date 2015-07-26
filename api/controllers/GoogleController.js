@@ -62,6 +62,7 @@ module.exports = {
 			var counts = Object.keys(result).length;
 			results.push({id: q[i], content: result, counts: counts});
 		}
+		console.log(json);
 		res.json(results);
 
 	}
